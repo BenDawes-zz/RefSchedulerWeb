@@ -9,14 +9,14 @@
 
   <body>
 
-    <div>Teams!</div>
+    <div>Team</div>
 
     <table class="teams table">
       <th:block th:each="team : ${teams}">
         <tr class="team row">
           <th class="id cell" th:text="${team.get('id')}">id</th>
-          <th class="name cell" th:text="${team.get('name')}">Team Name</th>
-          <th class="location cell" th:text="${team.get('location')}">Team Location</th>
+          <th class="name cell" th:text="${team.get('name').textValue()}">Team Name</th>
+          <th class="location cell" th:text="${team.get('location').textValue()}">Team Location</th>
         </tr>
       </th:block>
     </table>

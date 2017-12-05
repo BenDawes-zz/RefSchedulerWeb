@@ -1,1 +1,2 @@
 backend.server.url: http://localhost:8090
+spring.thymeleaf.cache: false
