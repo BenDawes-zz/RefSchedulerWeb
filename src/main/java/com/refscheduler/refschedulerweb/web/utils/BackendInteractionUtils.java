@@ -1,5 +1,8 @@
 package com.refscheduler.refschedulerweb.web.utils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,7 +14,7 @@ public class BackendInteractionUtils {
 
     // @TODO: Return type?
 
-    public static String makeRequest(String backendURL, String requestMethod) {
+    public static JsonNode makeRequest(String backendURL, String requestMethod) {
         StringBuffer response = new StringBuffer();
         try {
             URL obj = new URL(backendURL);
@@ -46,7 +49,8 @@ public class BackendInteractionUtils {
                 System.out.println("GET request not worked");
             }
             String responseStr = response.toString();
-            return responseStr;
+            JsonNode result = new ObjectMapper().readTree(responseStr);
+            return result;
         } catch (IOException e) {
             System.out.println("Could not process Request : " + e.getMessage());
         }

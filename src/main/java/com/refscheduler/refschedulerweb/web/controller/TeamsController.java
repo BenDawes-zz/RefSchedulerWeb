@@ -1,5 +1,6 @@
 package com.refscheduler.refschedulerweb.web.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.refscheduler.refschedulerweb.web.constants.BackendUrlConstants;
 import com.refscheduler.refschedulerweb.web.utils.BackendInteractionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class TeamsController {
     @RequestMapping({"/teams"})
     public String showTeams(Map<String, Object> model) {
         String teamsUrl = backendUrlConstants.getTeamsUrl();
-        String teams = BackendInteractionUtils.makeRequest(teamsUrl,"GET");
-        model.put("responseTxt", teams);
+        JsonNode teams = BackendInteractionUtils.makeRequest(teamsUrl,"GET");
+        model.put("teams", teams);
         return "teams";
     }
 }

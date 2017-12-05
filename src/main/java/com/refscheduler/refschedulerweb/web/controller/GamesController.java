@@ -1,5 +1,6 @@
 package com.refscheduler.refschedulerweb.web.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.refscheduler.refschedulerweb.web.constants.BackendUrlConstants;
 import com.refscheduler.refschedulerweb.web.utils.BackendInteractionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class GamesController {
     @RequestMapping({"/games"})
     public String showTimeslots(Map<String, Object> model) {
         String gamesUrl = backendUrlConstants.getGamesUrl();
-        String games = BackendInteractionUtils.makeRequest(gamesUrl,"GET");
+        JsonNode games = BackendInteractionUtils.makeRequest(gamesUrl,"GET");
         model.put("responseTxt", games);
         return "games";
     }

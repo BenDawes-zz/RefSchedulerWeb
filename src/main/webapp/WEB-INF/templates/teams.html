@@ -11,6 +11,14 @@
 
     <div>Teams!</div>
 
-    <div th:text="${responseTxt}">Dummy Content</div>
+    <table class="teams table">
+      <th:block th:each="team : ${teams}">
+        <tr class="team row">
+          <th class="id cell" th:text="${team.get('id')}">id</th>
+          <th class="name cell" th:text="${team.get('name')}">Team Name</th>
+          <th class="location cell" th:text="${team.get('location')}">Team Location</th>
+        </tr>
+      </th:block>
+    </table>
   </body>
 </html>

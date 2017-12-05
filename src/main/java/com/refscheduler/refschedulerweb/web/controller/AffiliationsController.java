@@ -1,5 +1,6 @@
 package com.refscheduler.refschedulerweb.web.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.refscheduler.refschedulerweb.web.constants.BackendUrlConstants;
 import com.refscheduler.refschedulerweb.web.utils.BackendInteractionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class AffiliationsController {
     @RequestMapping({"/affiliations"})
     public String showTimeslots(Map<String, Object> model) {
         String affiliationsUtl = backendUrlConstants.getAffiliationsUtl();
-        String affiliations = BackendInteractionUtils.makeRequest(affiliationsUtl,"GET");
+        JsonNode affiliations = BackendInteractionUtils.makeRequest(affiliationsUtl,"GET");
         model.put("responseTxt", affiliations);
         return "affiliations";
     }
