@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 @Component
-public class UrlConstants {
+public class BackendUrlConstants {
     @Value("${backend.server.url}")
     private String backendServerUrl;
 

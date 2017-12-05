@@ -1,6 +1,6 @@
 package com.refscheduler.refschedulerweb.web.controller;
 
-import com.refscheduler.refschedulerweb.web.constants.UrlConstants;
+import com.refscheduler.refschedulerweb.web.constants.BackendUrlConstants;
 import com.refscheduler.refschedulerweb.web.utils.BackendInteractionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class TimeslotsController {
 
     @Autowired
-    private UrlConstants urlConstants;
+    private BackendUrlConstants backendUrlConstants;
 
     public TimeslotsController() {
         super();
@@ -21,7 +21,7 @@ public class TimeslotsController {
 
     @RequestMapping({"/timeslots"})
     public String showTimeslots(Map<String, Object> model) {
-        String timeslotsUrl = urlConstants.getTimeslotsUrl();
+        String timeslotsUrl = backendUrlConstants.getTimeslotsUrl();
         String teams = BackendInteractionUtils.makeRequest(timeslotsUrl,"GET");
         model.put("responseTxt", teams);
         return "timeslots";

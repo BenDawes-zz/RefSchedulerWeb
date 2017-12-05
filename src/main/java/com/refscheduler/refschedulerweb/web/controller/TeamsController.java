@@ -1,6 +1,6 @@
 package com.refscheduler.refschedulerweb.web.controller;
 
-import com.refscheduler.refschedulerweb.web.constants.UrlConstants;
+import com.refscheduler.refschedulerweb.web.constants.BackendUrlConstants;
 import com.refscheduler.refschedulerweb.web.utils.BackendInteractionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class TeamsController {
 
     @Autowired
-    private UrlConstants urlConstants;
+    private BackendUrlConstants backendUrlConstants;
 
     public TeamsController() {
         super();
@@ -21,7 +21,7 @@ public class TeamsController {
 
     @RequestMapping({"/teams"})
     public String showTeams(Map<String, Object> model) {
-        String teamsUrl = urlConstants.getTeamsUrl();
+        String teamsUrl = backendUrlConstants.getTeamsUrl();
         String teams = BackendInteractionUtils.makeRequest(teamsUrl,"GET");
         model.put("responseTxt", teams);
         return "teams";
