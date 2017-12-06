@@ -24,7 +24,7 @@ public class GamesController {
     public String showTimeslots(Map<String, Object> model) {
         String gamesUrl = backendUrlConstants.getGamesUrl();
         JsonNode games = BackendInteractionUtils.makeRequest(gamesUrl,"GET");
-        model.put("responseTxt", games);
+        model.put("games", games);
         return "games";
     }
 }

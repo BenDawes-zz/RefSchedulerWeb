@@ -11,6 +11,33 @@
 
     <div>Persons!</div>
 
-    <div th:text="${responseTxt}">Dummy Content</div>
+    <table class="persons table">
+      <tr class="headings row">
+        <th class="id cell">id</th>
+        <th class="firstname cell">First Name</th>
+        <th class="lastname cell">Last Name</th>
+        <th class="email cell">Email</th>
+        <th class="hrlevel cell">HR Level</th>
+        <th class="arlevel cell">AR Level</th>
+        <th class="srlevel cell">SR Level</th>
+        <th class="snitch cell">Snitch?</th>
+        <th class="edit cell">Edit</th>
+        <th class="delete cell">Delete</th>
+      </tr>
+      <th:block th:each="person : ${persons}">
+        <tr class="team row">
+          <td class="id cell" th:text="${person.get('id')}">id</td>
+          <td class="firstname cell" th:text="${person.get('firstName').textValue()}">First Name</td>
+          <td class="lastname cell" th:text="${person.get('lastName').textValue()}">Last Name</td>
+          <td class="email cell" th:text="${person.get('emailAddress').textValue()}">Email</td>
+          <td class="hrlevel cell" th:text="${person.get('headRefereeLevel').textValue()}">HR Level</td>
+          <td class="arlevel cell" th:text="${person.get('assistantRefereeLevel').textValue()}">AR Level</td>
+          <td class="srlevel cell" th:text="${person.get('snitchRefereeLevel').textValue()}">SR Level</td>
+          <td class="snitch cell" th:text="${person.get('snitchLevel').textValue().equals('LEVEL_5') ? '&#10004;' : '&#10007;'}">Snitch?</td>
+          <td class="edit cell"><a href="#/oerson/${person.id}" th:href="@{/person/{id}(id=${person.get('id').asText()})}">Edit</a></td>
+          <td class="delete cell">Delete</td>
+        </tr>
+      </th:block>
+    </table>
   </body>
 </html>

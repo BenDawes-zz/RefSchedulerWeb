@@ -11,6 +11,22 @@
 
     <div>Timeslots!</div>
 
-    <div th:text="${responseTxt}">Dummy Content</div>
+    <table class="timeslots table">
+
+      <tr class="headings row">
+        <th class="id cell">id</th>
+        <th class="time cell">Time</th>
+        <th class="edit cell">Edit</th>
+        <th class="delete cell">Delete</th>
+      </tr>
+      <th:block th:each="timeslot : ${timeslots}">
+        <tr class="timeslot row">
+          <td class="id cell" th:text="${timeslot.get('id')}">id</td>
+          <td class="time cell" th:text="${timeslot.get('time').textValue()}">Time</td>
+          <td class="edit cell"><a href="#/timeslot/${timeslot.id}" th:href="@{/timeslot/{id}(id=${timeslot.get('id').asText()})}">Edit</a></td>
+          <td class="delete cell">Delete</td>
+        </tr>
+      </th:block>
+    </table>
   </body>
 </html>

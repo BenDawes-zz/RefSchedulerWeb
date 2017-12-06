@@ -24,7 +24,7 @@ public class AffiliationsController {
     public String showTimeslots(Map<String, Object> model) {
         String affiliationsUtl = backendUrlConstants.getAffiliationsUtl();
         JsonNode affiliations = BackendInteractionUtils.makeRequest(affiliationsUtl,"GET");
-        model.put("responseTxt", affiliations);
+        model.put("affiliations", affiliations);
         return "affiliations";
     }
 }

@@ -24,7 +24,7 @@ public class PersonsController {
     public String showTimeslots(Map<String, Object> model) {
         String personsUrl = backendUrlConstants.getPersonsUrl();
         JsonNode persons = BackendInteractionUtils.makeRequest(personsUrl,"GET");
-        model.put("responseTxt", persons);
+        model.put("persons", persons);
         return "persons";
     }
 }

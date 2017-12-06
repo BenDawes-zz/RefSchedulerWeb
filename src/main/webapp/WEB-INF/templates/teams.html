@@ -9,14 +9,23 @@
 
   <body>
 
-    <div>Team</div>
+    <div>Teams</div>
 
     <table class="teams table">
+      <tr class="headings row">
+        <th class="id cell">id</th>
+        <th class="name cell">Team Name</th>
+        <th class="location cell">Team Location</th>
+        <th class="edit cell">Edit</th>
+        <th class="delete cell">Delete</th>
+      </tr>
       <th:block th:each="team : ${teams}">
         <tr class="team row">
-          <th class="id cell" th:text="${team.get('id')}">id</th>
-          <th class="name cell" th:text="${team.get('name').textValue()}">Team Name</th>
-          <th class="location cell" th:text="${team.get('location').textValue()}">Team Location</th>
+          <td class="id cell" th:text="${team.get('id')}">id</td>
+          <td class="name cell" th:text="${team.get('name').textValue()}">Team Name</td>
+          <td class="location cell" th:text="${team.get('location').textValue()}">Team Location</td>
+          <td class="edit cell"><a href="#/team/${team.id}" th:href="@{/team/{id}(id=${team.get('id').asText()})}">Edit</a></td>
+          <td class="delete cell">Delete</td>
         </tr>
       </th:block>
     </table>

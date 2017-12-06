@@ -11,6 +11,40 @@
 
     <div>Games!</div>
 
-    <div th:text="${responseTxt}">Dummy Content</div>
-  </body>
+    <table class="games table">
+      <tr class="headings row">
+        <th class="id cell">id</th>
+        <th class="timeslot cell">Timeslot</th>
+        <th class="teama cell">Team A</th>
+        <th class="teamb cell">Team B</th>
+        <th class="hr cell">HR</th>
+        <th class="ar cell">AR 1</th>
+        <th class="ar cell">AR 2</th>
+        <th class="ar cell">AR 3</th>
+        <th class="ar cell">AR 4</th>
+        <th class="sr cell">SR</th>
+        <th class="snitch cell">Snitch</th>
+        <th class="pitch cell">Pitch</th>
+        <th class="edit cell">Edit</th>
+        <th class="cell cell">Delete</th>
+      </tr>
+      <th:block th:each="game : ${games}">
+        <tr class="game row">
+          <td class="id cell" th:text="${game.get('id')}">id</td>
+          <td class="timeslot cell" th:text="${game.get('timeslot').get('time').textValue()}">Timeslot</td>
+          <td class="teama cell" th:text="${game.get('teamA').get('name').textValue()}">Team A</td>
+          <td class="teamb cell" th:text="${game.get('teamB').get('name').textValue()}">Team B</td>
+          <td class="hr cell" th:text="${game.get('headReferee').get('firstName').textValue() + ' ' + game.get('headReferee').get('lastName').textValue()}">HR</td>
+          <td class="ar cell" th:text="${game.get('assistantReferees').has(0) ? game.get('assistantReferees').get(0)?.get('firstName')?.textValue() + ' ' + game.get('assistantReferees').get(0)?.get('lastName')?.textValue() : 'None Assigned'}">AR 1</td>
+          <td class="ar cell" th:text="${game.get('assistantReferees').has(1) ? game.get('assistantReferees').get(1)?.get('firstName')?.textValue() + ' ' + game.get('assistantReferees').get(1)?.get('lastName')?.textValue() : 'None Assigned'}">AR 2</td>
+          <td class="ar cell" th:text="${game.get('assistantReferees').has(2) ? game.get('assistantReferees').get(2)?.get('firstName')?.textValue() + ' ' + game.get('assistantReferees').get(2)?.get('lastName')?.textValue() : 'None Assigned'}">AR 3</td>
+          <td class="ar cell" th:text="${game.get('assistantReferees').has(3) ? game.get('assistantReferees').get(3)?.get('firstName')?.textValue() + ' ' + game.get('assistantReferees').get(3)?.get('lastName')?.textValue() : 'None Assigned'}">AR 4</td>
+          <td class="sr cell" th:text="${game.has('snitchReferee') ? game.get('snitchReferee')?.get('firstName')?.textValue()  + ' ' + game.get('snitchReferee')?.get('lastName')?.textValue() : 'None Assigned'} ">SR</td>
+          <td class="snitch cell" th:text="${game.has('snitchLevel') ? game.get('snitchLevel')?.get('firstName')?.textValue() + ' ' + game.get('snitchLevel')?.get('lastName')?.textValue() : 'None Assigned'}">Snitch</td>
+          <td class="pitch cell" th:text="${game.get('pitch').textValue()}">Pitch</td>
+          <td class="edit cell"><a href="#/game/${game.id}" th:href="@{/game/{id}(id=${game.get('id').asText()})}">Edit</a></td>
+          <td class="cell cell">Delete</td>
+        </tr>
+      </th:block>
+    </table>
 </html>

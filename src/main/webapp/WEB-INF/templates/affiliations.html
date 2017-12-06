@@ -11,6 +11,23 @@
 
     <div>Affiliations!</div>
 
-    <div th:text="${responseTxt}">Dummy Content</div>
+    <table class="affiliations table">
+      <tr class="headings row">
+        <th class="team cell">Team</th>
+        <th class="person cell">Person</th>
+        <th class="affiliation-type cell">Affiliation Type</th>
+        <th class="edit cell">Edit</th>
+        <th class="delete cell">Delete</th>
+      </tr>
+      <th:block th:each="affiliation : ${affiliations}">
+        <tr class="affiliation row">
+          <td class="team cell" th:text="${affiliation.get('team').get('name').textValue()}">Team</td>
+          <td class="person cell" th:text="${affiliation.get('person').get('firstName')?.textValue() + ' ' + affiliation.get('person').get('lastName')?.textValue()}">Person</td>
+          <td class="affiliation-type cell" th:text="${affiliation.get('affiliation').textValue()}">Affiliation Type</td>
+          <td class="edit cell"><a href="#/affiliation/${affiliation.id}" th:href="@{/affiliation/{id}(id=${affiliation.get('id').asText()})}">Edit</a></td>
+          <td class="delete cell">Delete</td>
+        </tr>
+      </th:block>
+    </table>
   </body>
 </html>

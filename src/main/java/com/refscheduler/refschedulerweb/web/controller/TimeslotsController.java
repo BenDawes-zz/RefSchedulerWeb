@@ -23,8 +23,8 @@ public class TimeslotsController {
     @RequestMapping({"/timeslots"})
     public String showTimeslots(Map<String, Object> model) {
         String timeslotsUrl = backendUrlConstants.getTimeslotsUrl();
-        JsonNode teams = BackendInteractionUtils.makeRequest(timeslotsUrl,"GET");
-        model.put("responseTxt", teams);
+        JsonNode timeslots = BackendInteractionUtils.makeRequest(timeslotsUrl,"GET");
+        model.put("timeslots", timeslots);
         return "timeslots";
     }
 }
